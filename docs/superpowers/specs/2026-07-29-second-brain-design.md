@@ -81,12 +81,32 @@ hinweg).
 - **`app.py`** — Streamlit-Chat-UI (öffentlich, Recruiter-facing,
   Deployment analog `ai-act-validation-toolkit`/`cloud-native-pipeline`
   via Streamlit Community Cloud). Lädt `snapshot.json` beim Start, nutzt
-  `answer_question()`.
+  `answer_question()`. **Muss iframe-einbettbar sein** (siehe
+  "Integration in marco-os" unten) — Streamlit setzt standardmäßig keine
+  `X-Frame-Options`, die das verhindern, das wird trotzdem explizit
+  verifiziert statt angenommen.
 - **`mcp_server.py`** — MCP-Server (Python-SDK, stdio-Transport), läuft
   lokal bei Marco (Claude Code/Desktop `mcp.json`). Exponiert:
   - `list_projects()` — kompakte Liste aller Projekte (id/title/summary/
     status/links)
   - `ask_about_projects(question)` — ruft dieselbe `answer_question()`
+
+### Integration in marco-os (iframe)
+
+`marco-os` (separates Repo, eigene Spec unter
+`../marco-os/docs/superpowers/specs/`) ist bewusst backend-frei (plain
+HTML/CSS/Vanilla-JS, kein Build-Tool, GitHub Pages). Ein echter LLM-Chat
+kann dort nicht direkt laufen (API-Key dürfte nicht im Browser-JS
+landen). Statt marco-os' Architektur aufzubrechen, bekommt es später
+einen neuen Fenstertyp, der die second-brain-Streamlit-App per `<iframe
+src="https://second-brain.streamlit.app/?embed=true">` einbettet
+(Streamlits eingebauter `?embed=true`-Parameter blendet Sidebar/Menü/
+Footer aus, für ein aufgeräumteres Einbetten). second-brain bleibt
+alleiniger Besitzer der Chat-Logik/des Hostings; marco-os bleibt
+backend-frei. Diese Integration ist **nicht Teil des second-brain-
+Implementierungsplans** (marco-os-seitiger Code gehört ins marco-os-Repo
+und braucht die second-brain-Live-URL als Voraussetzung), wird aber hier
+als Anforderung an `app.py` (iframe-Tauglichkeit) vorgemerkt.
 
 ## Datenfluss
 
@@ -138,6 +158,9 @@ hinweg).
 - Streamlit-Chat live deployed, beantwortet Fragen zu mind. 3 verschiedenen
   Projekten korrekt (inkl. Cross-Projekt-Frage wie "welche Projekte zeigen
   Cloud-Erfahrung?").
+- iframe-Einbettbarkeit verifiziert (`app.py` lädt mit `?embed=true` in
+  einem `<iframe>`, keine `X-Frame-Options`, die das blockieren) —
+  Voraussetzung für die spätere marco-os-Integration.
 - MCP-Server lokal lauffähig, in Claude Desktop/Code eingebunden, mind.
   eine Anfrage End-to-End demonstriert.
 - README + GitHub-Pages-Projektseite nach dem etablierten Muster
