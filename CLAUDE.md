@@ -74,8 +74,16 @@ Implementierungsplan abgeschlossen ist.*
   `X-Frame-Options`-Header).
 
 Alle 14 Plan-Tasks sind damit abgeschlossen. `PORTFOLIO_BACKLOG.md` und
-`stangfolio/data/projects.js` sollten auf `fertig`/`status: "live"` +
-Live-Demo-URL aktualisiert werden (siehe dort).
+`stangfolio/data/projects.js` sind auf `fertig`/`status: "live"` +
+Live-Demo-URL aktualisiert.
+- ✅ Chat-Antworten auf Nutzerwunsch kürzer gemacht (2-4 Sätze Default,
+  siehe `SYSTEM_PROMPT_TEMPLATE` in `answering.py`).
+- ✅ marco-os-Integration umgesetzt: Klick auf den zentralen Marco-Knoten
+  öffnet diesen Chat als eingebettetes Fenster (separate Spec/Plan/Review
+  im `marco-os`-Repo, siehe `../marco-os/HANDOVER.md`).
+
+Ausführlicher Projektstatus inkl. Deployment-Details, bekannter offener
+Punkte und Schnellreferenz: [`HANDOVER.md`](HANDOVER.md).
 
 **Eine von zwei geparkten Entscheidungen ist geklärt** (Details im
 SDD-Ledger, `.superpowers/sdd/2026-07-29-second-brain-implementation/progress.md`):
