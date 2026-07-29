@@ -3,8 +3,7 @@
 Portfolio-Projekt von Marco Stang für Bewerbungen auf AI/KI-Rollen (ggf.
 auch KI-Transformations-Rollen).
 
-🔗 **Projektseite** — folgt nach Aktivierung von GitHub Pages
-(`https://maggostang-droid.github.io/second-brain/`)
+🔗 **[Projektseite](https://maggostang-droid.github.io/second-brain/)**
 
 ## In 30 Sekunden
 
