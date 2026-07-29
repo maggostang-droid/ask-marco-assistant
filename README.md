@@ -15,7 +15,7 @@ ist zusätzlich als MCP-Server abrufbar, sodass jeder MCP-fähige Client
 
 ## Live-Demo
 
-[Link folgt nach Streamlit-Community-Cloud-Deployment]
+🔗 **[second-brain-projects.streamlit.app](https://second-brain-projects.streamlit.app/)**
 
 Hinweis: Streamlit Community Cloud (Free Tier) schläft nach Inaktivität
 ein — der erste Ladevorgang kann ein paar Sekunden dauern.

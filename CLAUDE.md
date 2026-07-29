@@ -68,11 +68,14 @@ Implementierungsplan abgeschlossen ist.*
 - ✅ Task 14: `PORTFOLIO_BACKLOG.md` (Item #5, Item #3 als ersetzt markiert)
   und `stangfolio/data/projects.js` (Karte mit `status: "coming-soon"`,
   `demoUrl: null`) aktualisiert.
-- ⏳ Task 13 offen: Streamlit-Community-Cloud-Deployment braucht Marcos
-  eigenen GitHub-Login auf share.streamlit.io + seinen eigenen
-  `ANTHROPIC_API_KEY` als Secret — kann eine Agenten-Session nicht selbst
-  erledigen (siehe `../PORTFOLIO_AGENT_GUIDE.md`). Genaue Schritte stehen im
-  Implementierungsplan, Task 13.
+- ✅ Task 13: Streamlit-Community-Cloud-Deployment live (Marco hat Login +
+  Secrets selbst gesetzt): https://second-brain-projects.streamlit.app/ —
+  erreichbar verifiziert, iframe-Einbettbarkeit bestätigt (kein
+  `X-Frame-Options`-Header).
+
+Alle 14 Plan-Tasks sind damit abgeschlossen. `PORTFOLIO_BACKLOG.md` und
+`stangfolio/data/projects.js` sollten auf `fertig`/`status: "live"` +
+Live-Demo-URL aktualisiert werden (siehe dort).
 
 **Eine von zwei geparkten Entscheidungen ist geklärt** (Details im
 SDD-Ledger, `.superpowers/sdd/2026-07-29-second-brain-implementation/progress.md`):
