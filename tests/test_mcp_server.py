@@ -29,8 +29,9 @@ def test_ask_about_projects_delegates_to_answer_question(monkeypatch):
     monkeypatch.setattr(mcp_server_module, "get_llm", lambda: "fake-llm")
     calls = {}
 
-    def fake_answer_question(llm, question, snapshot):
+    def fake_answer_question(llm, question, snapshot, include_handover=True):
         calls["args"] = (llm, question, snapshot)
+        calls["include_handover"] = include_handover
         return "Antwort"
 
     monkeypatch.setattr(mcp_server_module, "answer_question", fake_answer_question)
@@ -40,3 +41,6 @@ def test_ask_about_projects_delegates_to_answer_question(monkeypatch):
     assert result == "Antwort"
     assert calls["args"][0] == "fake-llm"
     assert calls["args"][1] == "Was macht sql-agent?"
+    # MCP-Server läuft nur lokal bei Marco — anders als der öffentliche
+    # Streamlit-Chat darf er HANDOVER.md-Inhalte weiterhin sehen.
+    assert calls["include_handover"] is True

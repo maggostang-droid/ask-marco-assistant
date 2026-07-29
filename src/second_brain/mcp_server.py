@@ -21,7 +21,9 @@ def ask_about_projects(question: str) -> str:
     """Beantwortet eine Frage zu Marcos Portfolio-Projekten."""
     snapshot = load_snapshot()
     llm = get_llm()
-    return answer_question(llm, question, snapshot)
+    # include_handover bleibt beim Default True: der MCP-Server läuft nur
+    # lokal bei Marco, anders als der öffentliche Streamlit-Chat (app.py).
+    return answer_question(llm, question, snapshot, include_handover=True)
 
 
 if __name__ == "__main__":

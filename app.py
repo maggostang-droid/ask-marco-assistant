@@ -49,7 +49,10 @@ if question:
         try:
             llm = get_llm()
             with st.spinner("Antwort wird generiert..."):
-                answer = answer_question(llm, question, snapshot)
+                # include_handover=False: öffentlicher Chat bekommt keine
+                # HANDOVER.md-Inhalte (können Betriebsdetails wie AWS-Account-IDs
+                # enthalten) — nur der lokale MCP-Server sieht sie (Default True).
+                answer = answer_question(llm, question, snapshot, include_handover=False)
         except Exception as e:
             # Nutzern keine internen Provider-/Exception-Details zeigen (können
             # z.B. rohe API-Fehlerkörper enthalten) — stattdessen serverseitig loggen.

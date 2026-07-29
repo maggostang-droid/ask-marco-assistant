@@ -30,6 +30,10 @@ ein — der erste Ladevorgang kann ein paar Sekunden dauern.
 3. Exponiert dasselbe Wissen zusätzlich über einen MCP-Server
    (`list_projects`, `ask_about_projects`) für Claude Code/Desktop.
 
+Der öffentliche Chat bekommt dabei bewusst kein `HANDOVER.md` in den
+Prompt (kann Betriebsdetails wie Cloud-Account-IDs enthalten) — nur der
+lokale MCP-Server sieht die volle Doku inklusive HANDOVER.
+
 ## Architektur
 
 - `src/second_brain/snapshot.py` — Pydantic-Schema + `load_snapshot()`

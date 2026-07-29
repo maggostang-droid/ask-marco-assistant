@@ -35,7 +35,9 @@ Kein Linter konfiguriert.
 - `src/second_brain/llm.py` — provider-agnostische LLM-Anbindung (Muster
   aus `ai-act-validation-toolkit`)
 - `src/second_brain/answering.py` — `build_prompt()` (Context-Stuffing)
-  + `answer_question()`
+  + `answer_question()`, beide mit `include_handover`-Flag (Default `True`;
+  `app.py` setzt `False` — HANDOVER.md bleibt dem lokalen MCP-Server
+  vorbehalten, siehe "Aktueller Stand")
 - `app.py` — Streamlit-Chat-UI, muss iframe-einbettbar bleiben (siehe
   Design-Spec, "Integration in marco-os")
 - `src/second_brain/mcp_server.py` — MCP-Server (Klasse `MCPServer` aus
@@ -72,20 +74,18 @@ Implementierungsplan abgeschlossen ist.*
   erledigen (siehe `../PORTFOLIO_AGENT_GUIDE.md`). Genaue Schritte stehen im
   Implementierungsplan, Task 13.
 
-**Zwei Entscheidungen sind bewusst für Marco geparkt, nicht selbst
-getroffen** (Details im SDD-Ledger,
-`.superpowers/sdd/2026-07-29-second-brain-implementation/progress.md`):
+**Eine von zwei geparkten Entscheidungen ist geklärt** (Details im
+SDD-Ledger, `.superpowers/sdd/2026-07-29-second-brain-implementation/progress.md`):
 
-1. **Sicherheitsrelevant, vor dem Streamlit-Deployment klären:** Der
-   öffentliche Chat stuffed aktuell auch `HANDOVER.md`-Inhalte in den
-   Prompt — bei `cloud-native-pipeline` steht darin eine echte
-   AWS-Account-ID, IAM-Ressourcennamen und eine selbst notierte zu breite
-   IAM-Policy. Kein neues Leak (die Datei ist im eigenen Repo bereits
-   öffentlich), aber ein interaktiver Chat macht es leichter auffindbar als
-   ein vergrabenes Dokument. Vorschlag: `HANDOVER.md` nur für den lokalen
-   MCP-Server einbeziehen, nicht für den öffentlichen Streamlit-Chat
-   (gemeinsamer Snapshot mit Filter-Flag).
-2. **Produktlücke:** `list_projects()`/`Project`-Schema tragen keine
+1. ✅ **Geklärt (2026-07-29):** `HANDOVER.md`-Inhalte werden jetzt nur noch
+   für den lokalen MCP-Server einbezogen, nicht mehr für den öffentlichen
+   Streamlit-Chat — `answer_question()`/`build_prompt()` haben dafür ein
+   `include_handover`-Flag (Default `True`, `app.py` setzt es explizit auf
+   `False`). Grund: `HANDOVER.md` enthält bei manchen Projekten
+   Betriebsdetails (z.B. eine echte AWS-Account-ID + IAM-Ressourcennamen bei
+   `cloud-native-pipeline`), die über einen interaktiven öffentlichen Chat
+   deutlich leichter auffindbar wären als in einem einzelnen Repo vergraben.
+2. **Noch offen:** `list_projects()`/`Project`-Schema tragen keine
    `demo_url`/`repo_url`/`status` (Design-Spec wollte das, der
    Implementierungsplan hat es stillschweigend weggelassen) — der Bot kann
    Projekte aktuell nicht zuverlässig mit einem klickbaren Demo-Link

@@ -38,12 +38,48 @@ def _sample_snapshot() -> Snapshot:
     )
 
 
+def _sample_snapshot_with_handover() -> Snapshot:
+    return Snapshot(
+        generated_at="2026-07-29T00:00:00+00:00",
+        projects=[
+            Project(
+                id="cloud-native-pipeline",
+                title="cloud-native-pipeline",
+                repo_path="cloud-native-pipeline",
+                docs=ProjectDocs(
+                    readme="# cloud-native-pipeline\n\nAWS-Pipeline.",
+                    claude_md=None,
+                    handover="AWS-Account-ID: 840385630706",
+                ),
+            )
+        ],
+    )
+
+
 def test_build_prompt_includes_all_project_titles_and_docs():
     snapshot = _sample_snapshot()
 
     prompt = build_prompt(snapshot)
 
     assert "cloud-native-pipeline" in prompt
+    assert "AWS-Pipeline" in prompt
+
+
+def test_build_prompt_includes_handover_by_default():
+    snapshot = _sample_snapshot_with_handover()
+
+    prompt = build_prompt(snapshot)
+
+    assert "840385630706" in prompt
+
+
+def test_build_prompt_excludes_handover_when_disabled():
+    snapshot = _sample_snapshot_with_handover()
+
+    prompt = build_prompt(snapshot, include_handover=False)
+
+    assert "840385630706" not in prompt
+    # README bleibt trotzdem drin — nur HANDOVER.md wird ausgeschlossen.
     assert "AWS-Pipeline" in prompt
 
 

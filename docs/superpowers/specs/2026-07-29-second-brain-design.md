@@ -13,6 +13,20 @@ Ersetzt Backlog-Item #3 (`mcp-server-showcase`) in
 `../PORTFOLIO_BACKLOG.md` — das MCP-Signal wird hier mit abgedeckt, ein
 separates SQL-Guardrails-MCP-Projekt ist damit nicht mehr geplant.
 
+## Addendum (2026-07-29, nach dem finalen Whole-Branch-Review)
+
+Der finale Review fand, dass der öffentliche Chat `HANDOVER.md`-Inhalte in
+den System-Prompt stuffed — bei `cloud-native-pipeline` enthält das eine
+echte AWS-Account-ID und IAM-Ressourcennamen. Kein neues Leak (die Datei
+ist im jeweiligen Repo bereits öffentlich), aber ein interaktiver Chat
+macht es leichter auffindbar als ein vergrabenes Dokument. Entscheidung
+(mit Marco): `HANDOVER.md` bleibt Teil des Snapshots (für den lokalen
+MCP-Server weiterhin nutzbar), wird aber für den öffentlichen
+Streamlit-Chat aus dem Prompt ausgeschlossen. Umgesetzt über ein
+`include_handover`-Flag in `build_prompt()`/`answer_question()`
+(`src/second_brain/answering.py`), Default `True`, `app.py` setzt explizit
+`False`.
+
 **Zielgruppe:** beide — Recruiter über eine öffentliche Chat-Seite, Marco
 selbst zusätzlich über einen MCP-Server in Claude Code/Desktop.
 

@@ -14,24 +14,34 @@ welche Projekt-ID(s) sie sich bezieht.
 """
 
 
-def _format_project(project: Project) -> str:
+def _format_project(project: Project, include_handover: bool) -> str:
     parts = [f"## {project.title} (id: {project.id})"]
     if project.docs.readme:
         parts.append(f"### README\n{project.docs.readme}")
     if project.docs.claude_md:
         parts.append(f"### CLAUDE.md\n{project.docs.claude_md}")
-    if project.docs.handover:
+    if include_handover and project.docs.handover:
         parts.append(f"### HANDOVER.md\n{project.docs.handover}")
     return "\n\n".join(parts)
 
 
-def build_prompt(snapshot: Snapshot) -> str:
-    projects_block = "\n\n---\n\n".join(_format_project(p) for p in snapshot.projects)
+def build_prompt(snapshot: Snapshot, include_handover: bool = True) -> str:
+    # include_handover=False für den öffentlichen Streamlit-Chat: HANDOVER.md
+    # enthält bei manchen Projekten Betriebsdetails (z.B. echte AWS-Account-IDs,
+    # IAM-Ressourcennamen bei cloud-native-pipeline), die zwar im jeweiligen
+    # Repo selbst schon öffentlich sind, aber über einen interaktiven Chat
+    # deutlich leichter auffindbar wären. Der lokale MCP-Server (nur Marco)
+    # nutzt weiterhin den Default True.
+    projects_block = "\n\n---\n\n".join(
+        _format_project(p, include_handover) for p in snapshot.projects
+    )
     return SYSTEM_PROMPT_TEMPLATE.format(projects_block=projects_block)
 
 
-def answer_question(llm: BaseChatModel, question: str, snapshot: Snapshot) -> str:
-    system_prompt = build_prompt(snapshot)
+def answer_question(
+    llm: BaseChatModel, question: str, snapshot: Snapshot, include_handover: bool = True
+) -> str:
+    system_prompt = build_prompt(snapshot, include_handover=include_handover)
     response = llm.invoke(
         [
             ("system", system_prompt),
