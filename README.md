@@ -3,7 +3,8 @@
 Portfolio-Projekt von Marco Stang für Bewerbungen auf AI/KI-Rollen (ggf.
 auch KI-Transformations-Rollen).
 
-🔗 **[Projektseite](https://maggostang-droid.github.io/second-brain/)**
+🔗 **Projektseite** — folgt nach Aktivierung von GitHub Pages
+(`https://maggostang-droid.github.io/second-brain/`)
 
 ## In 30 Sekunden
 
@@ -25,7 +26,7 @@ ein — der erste Ladevorgang kann ein paar Sekunden dauern.
 1. Baut aus README/CLAUDE.md/HANDOVER aller anderen Portfolio-Repos einen
    Snapshot (`data/snapshot.json`).
 2. Beantwortet Fragen im Chat, indem der komplette Snapshot als Kontext an
-   ein LLM geht (Context-Stuffing statt Vektor-RAG — bei ~10 Projekten
+   ein LLM geht (Context-Stuffing statt Vektor-RAG — bei aktuell 8 Projekten
    passt alles in ein Prompt).
 3. Exponiert dasselbe Wissen zusätzlich über einen MCP-Server
    (`list_projects`, `ask_about_projects`) für Claude Code/Desktop.
@@ -66,6 +67,6 @@ in allen Tests durch einfache Fakes ersetzt).
 - Snapshot wird manuell gebaut, kein automatisches Aktualisieren bei
   Änderungen in anderen Repos.
 - Kein Vektor-RAG — bei stark wachsender Projektzahl würde der Snapshot
-  irgendwann nicht mehr komplett ins Prompt passen (aktuell bei ~10
+  irgendwann nicht mehr komplett ins Prompt passen (aktuell bei 8
   Projekten kein Problem).
 - Nur Projekt-Metadaten/Doku, keine Volltext-Code-Suche.

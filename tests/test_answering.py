@@ -1,17 +1,23 @@
-from types import SimpleNamespace
+from langchain_core.messages import AIMessage
 
 from second_brain.answering import answer_question, build_prompt
 from second_brain.snapshot import Project, ProjectDocs, Snapshot
 
 
 class _FakeLLM:
+    """Ahmt die .invoke()-Schnittstelle eines echten Chat-Models nach.
+
+    Gibt ein echtes AIMessage zurück (statt eines simplen Stand-ins), damit
+    der Test dieselbe .text-Zugriffslogik durchläuft wie ein echtes LLM.
+    """
+
     def __init__(self, reply: str):
         self.reply = reply
         self.last_messages = None
 
     def invoke(self, messages):
         self.last_messages = messages
-        return SimpleNamespace(content=self.reply)
+        return AIMessage(content=self.reply)
 
 
 def _sample_snapshot() -> Snapshot:

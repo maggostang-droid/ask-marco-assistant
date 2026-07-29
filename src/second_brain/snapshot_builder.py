@@ -1,12 +1,21 @@
 """Baut den Portfolio-Snapshot aus README/CLAUDE.md/HANDOVER der Sibling-Repos unter 02_Portfolio."""
 
+import os
 import re
+import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
 from second_brain.snapshot import DEFAULT_SNAPSHOT_PATH, Project, Snapshot
 
+# Nur korrekt, wenn second-brain direkt unter 02_Portfolio/ liegt (nicht in einem
+# Git-Worktree wie second-brain/.worktrees/<name>/). Für abweichende Layouts
+# SECOND_BRAIN_PORTFOLIO_ROOT setzen (siehe main()).
 PORTFOLIO_ROOT = DEFAULT_SNAPSHOT_PATH.parents[2]
+
+PORTFOLIO_ROOT_ENV_VAR = "SECOND_BRAIN_PORTFOLIO_ROOT"
+
+MIN_EXPECTED_PROJECTS = 3
 
 
 def discover_projects(portfolio_root: Path) -> list[Path]:
@@ -47,11 +56,37 @@ def build_snapshot(portfolio_root: Path) -> Snapshot:
     return Snapshot(generated_at=datetime.now(timezone.utc).isoformat(), projects=projects)
 
 
-def main() -> None:
-    snapshot = build_snapshot(PORTFOLIO_ROOT)
+def _write_snapshot(portfolio_root: Path) -> None:
+    """Baut den Snapshot und schreibt ihn nach DEFAULT_SNAPSHOT_PATH.
+
+    Bricht mit sys.exit(1) ab, statt eine verdächtig kleine Projektzahl
+    (z.B. weil portfolio_root falsch ist — etwa in einem Git-Worktree) einfach
+    über data/snapshot.json zu schreiben.
+    """
+    snapshot = build_snapshot(portfolio_root)
+
+    if len(snapshot.projects) < MIN_EXPECTED_PROJECTS:
+        print(
+            f"Fehler: Nur {len(snapshot.projects)} Projekt(e) unter {portfolio_root} "
+            f"gefunden (erwartet: mindestens {MIN_EXPECTED_PROJECTS}). Das sieht falsch "
+            "aus — data/snapshot.json wird NICHT überschrieben.\n"
+            "Möglicher Grund: Dieses Repo liegt nicht direkt unter 02_Portfolio/ (z.B. "
+            "weil es sich um einen Git-Worktree wie second-brain/.worktrees/<name>/ "
+            f"handelt). In dem Fall {PORTFOLIO_ROOT_ENV_VAR} auf den echten "
+            "02_Portfolio-Pfad setzen und erneut ausführen.",
+            file=sys.stderr,
+        )
+        sys.exit(1)
+
     DEFAULT_SNAPSHOT_PATH.parent.mkdir(parents=True, exist_ok=True)
     DEFAULT_SNAPSHOT_PATH.write_text(snapshot.model_dump_json(indent=2), encoding="utf-8")
     print(f"{len(snapshot.projects)} Projekte in {DEFAULT_SNAPSHOT_PATH} geschrieben.")
+
+
+def main() -> None:
+    override = os.environ.get(PORTFOLIO_ROOT_ENV_VAR)
+    portfolio_root = Path(override) if override else PORTFOLIO_ROOT
+    _write_snapshot(portfolio_root)
 
 
 if __name__ == "__main__":

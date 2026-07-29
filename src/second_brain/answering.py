@@ -1,5 +1,7 @@
 """Baut den Prompt aus dem Snapshot (Context-Stuffing) und lässt das LLM antworten."""
 
+from langchain_core.language_models.chat_models import BaseChatModel
+
 from second_brain.snapshot import Project, Snapshot
 
 SYSTEM_PROMPT_TEMPLATE = """Du bist das "second brain" von Marco Stangs Portfolio-Website. \
@@ -28,7 +30,7 @@ def build_prompt(snapshot: Snapshot) -> str:
     return SYSTEM_PROMPT_TEMPLATE.format(projects_block=projects_block)
 
 
-def answer_question(llm, question: str, snapshot: Snapshot) -> str:
+def answer_question(llm: BaseChatModel, question: str, snapshot: Snapshot) -> str:
     system_prompt = build_prompt(snapshot)
     response = llm.invoke(
         [
@@ -36,4 +38,8 @@ def answer_question(llm, question: str, snapshot: Snapshot) -> str:
             ("human", question),
         ]
     )
-    return response.content
+    # .text ist in der installierten langchain-core-Version (1.5.x) ein
+    # TextAccessor (str-Subklasse), der zuverlässig den reinen Antworttext
+    # liefert — auch wenn .content (z.B. bei manchen Anthropic-Antwortformen)
+    # eine Liste von Content-Blöcken statt eines plain str sein kann.
+    return response.text

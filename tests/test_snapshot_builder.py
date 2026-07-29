@@ -1,4 +1,11 @@
-from second_brain.snapshot_builder import build_snapshot, discover_projects, extract_project
+import pytest
+
+from second_brain.snapshot_builder import (
+    _write_snapshot,
+    build_snapshot,
+    discover_projects,
+    extract_project,
+)
 
 
 def test_discover_projects_finds_only_dirs_with_claude_md(tmp_path):
@@ -50,3 +57,18 @@ def test_build_snapshot_returns_snapshot_with_all_discovered_projects(tmp_path):
     assert len(snapshot.projects) == 1
     assert snapshot.projects[0].id == "project-a"
     assert snapshot.generated_at  # nicht leer
+
+
+def test_write_snapshot_refuses_to_write_when_too_few_projects(tmp_path, capsys):
+    # Nur 1 Projekt-Verzeichnis — typisch für ein falsches portfolio_root
+    # (z.B. innerhalb eines Git-Worktrees statt 02_Portfolio selbst).
+    project_dir = tmp_path / "project-a"
+    project_dir.mkdir()
+    (project_dir / "CLAUDE.md").write_text("# Kontext", encoding="utf-8")
+
+    with pytest.raises(SystemExit) as exc_info:
+        _write_snapshot(tmp_path)
+
+    assert exc_info.value.code == 1
+    captured = capsys.readouterr()
+    assert "SECOND_BRAIN_PORTFOLIO_ROOT" in captured.err

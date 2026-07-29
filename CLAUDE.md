@@ -38,8 +38,8 @@ Kein Linter konfiguriert.
   + `answer_question()`
 - `app.py` — Streamlit-Chat-UI, muss iframe-einbettbar bleiben (siehe
   Design-Spec, "Integration in marco-os")
-- `src/second_brain/mcp_server.py` — MCP-Server (MCPServer (mcp.server.mcpserver)), Tools
-  `list_projects`/`ask_about_projects`
+- `src/second_brain/mcp_server.py` — MCP-Server (Klasse `MCPServer` aus
+  `mcp.server.mcpserver`), Tools `list_projects`/`ask_about_projects`
 - `scripts/build_snapshot.py` — CLI-Einstiegspunkt für den Snapshot-Builder
 
 ## Wie hier gearbeitet wird
@@ -54,3 +54,10 @@ mit, Konzepte erklären statt vorlösen, alle Doku auf Deutsch.
 Implementierungsplan abgeschlossen ist.*
 
 - ✅ Design-Spec + Implementierungsplan erstellt und freigegeben.
+- ✅ Tasks 1–10 abgeschlossen: Skeleton, Snapshot-Schema, Snapshot-Builder +
+  echte Daten, LLM-Anbindung, Antwortlogik, Streamlit-App, MCP-Server,
+  README/CLAUDE.md, GitHub-Pages-Seite.
+- ⏳ Tasks 11–14 offen (Repo-Erstellung, Pages-Aktivierung,
+  Streamlit-Cloud-Deployment, Aktualisierung von Portfolio-Backlog/-Index) —
+  brauchen Marcos Zugangsdaten bzw. explizites Go, daher pausiert bis er
+  mitmacht.
