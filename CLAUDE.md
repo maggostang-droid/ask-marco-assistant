@@ -56,8 +56,37 @@ Implementierungsplan abgeschlossen ist.*
 - ✅ Design-Spec + Implementierungsplan erstellt und freigegeben.
 - ✅ Tasks 1–10 abgeschlossen: Skeleton, Snapshot-Schema, Snapshot-Builder +
   echte Daten, LLM-Anbindung, Antwortlogik, Streamlit-App, MCP-Server,
-  README/CLAUDE.md, GitHub-Pages-Seite.
-- ⏳ Tasks 11–14 offen (Repo-Erstellung, Pages-Aktivierung,
-  Streamlit-Cloud-Deployment, Aktualisierung von Portfolio-Backlog/-Index) —
-  brauchen Marcos Zugangsdaten bzw. explizites Go, daher pausiert bis er
-  mitmacht.
+  README/CLAUDE.md, GitHub-Pages-Seite. Whole-Branch-Review + Fix-Welle
+  durchgeführt (13/13 Tests grün).
+- ✅ Task 11: GitHub-Repo angelegt und gepusht:
+  https://github.com/maggostang-droid/second-brain (public, Branch
+  `master`).
+- ✅ Task 12: GitHub-Pages-Projektseite live:
+  https://maggostang-droid.github.io/second-brain/
+- ✅ Task 14: `PORTFOLIO_BACKLOG.md` (Item #5, Item #3 als ersetzt markiert)
+  und `stangfolio/data/projects.js` (Karte mit `status: "coming-soon"`,
+  `demoUrl: null`) aktualisiert.
+- ⏳ Task 13 offen: Streamlit-Community-Cloud-Deployment braucht Marcos
+  eigenen GitHub-Login auf share.streamlit.io + seinen eigenen
+  `ANTHROPIC_API_KEY` als Secret — kann eine Agenten-Session nicht selbst
+  erledigen (siehe `../PORTFOLIO_AGENT_GUIDE.md`). Genaue Schritte stehen im
+  Implementierungsplan, Task 13.
+
+**Zwei Entscheidungen sind bewusst für Marco geparkt, nicht selbst
+getroffen** (Details im SDD-Ledger,
+`.superpowers/sdd/2026-07-29-second-brain-implementation/progress.md`):
+
+1. **Sicherheitsrelevant, vor dem Streamlit-Deployment klären:** Der
+   öffentliche Chat stuffed aktuell auch `HANDOVER.md`-Inhalte in den
+   Prompt — bei `cloud-native-pipeline` steht darin eine echte
+   AWS-Account-ID, IAM-Ressourcennamen und eine selbst notierte zu breite
+   IAM-Policy. Kein neues Leak (die Datei ist im eigenen Repo bereits
+   öffentlich), aber ein interaktiver Chat macht es leichter auffindbar als
+   ein vergrabenes Dokument. Vorschlag: `HANDOVER.md` nur für den lokalen
+   MCP-Server einbeziehen, nicht für den öffentlichen Streamlit-Chat
+   (gemeinsamer Snapshot mit Filter-Flag).
+2. **Produktlücke:** `list_projects()`/`Project`-Schema tragen keine
+   `demo_url`/`repo_url`/`status` (Design-Spec wollte das, der
+   Implementierungsplan hat es stillschweigend weggelassen) — der Bot kann
+   Projekte aktuell nicht zuverlässig mit einem klickbaren Demo-Link
+   beantworten. Möglicher Folge-Task.
