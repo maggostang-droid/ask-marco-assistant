@@ -1,15 +1,15 @@
-# second-brain
+# Ask-Marco Assistant
 
 Portfolio-Projekt von Marco Stang für Bewerbungen auf AI/KI-Rollen (ggf.
 auch KI-Transformations-Rollen).
 
-🔗 **[Projektseite](https://maggostang-droid.github.io/second-brain/)**
+🔗 **[Projektseite](https://maggostang-droid.github.io/ask-marco-assistant/)**
 
 ## In 30 Sekunden
 
 Ein "second brain", das alle fertigen Portfolio-Projekte von Marco kennt —
 frag es direkt im Chat, z.B. "welche Projekte zeigen Cloud-Erfahrung?" oder
-"was macht sql-agent?", statt jedes README einzeln zu lesen. Dasselbe Wissen
+"was macht der SQL Copilot?", statt jedes README einzeln zu lesen. Dasselbe Wissen
 ist zusätzlich als MCP-Server abrufbar, sodass jeder MCP-fähige Client
 (Claude Code, Claude Desktop) direkt danach fragen kann.
 
