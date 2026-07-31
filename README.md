@@ -3,6 +3,9 @@
 Portfolio-Projekt von Marco Stang für Bewerbungen auf AI/KI-Rollen (ggf.
 auch KI-Transformations-Rollen).
 
+<!-- TODO(Marco): Screenshot der Chat-Demo hier einfügen:
+     ![Ask-Marco Assistant — Chat über die Portfolio-Projekte](docs/demo.png) -->
+
 🔗 **[Projektseite](https://maggostang-droid.github.io/ask-marco-assistant/)**
 
 ## In 30 Sekunden
@@ -33,6 +36,15 @@ ein — der erste Ladevorgang kann ein paar Sekunden dauern.
 Der öffentliche Chat bekommt dabei bewusst kein `HANDOVER.md` in den
 Prompt (kann Betriebsdetails wie Cloud-Account-IDs enthalten) — nur der
 lokale MCP-Server sieht die volle Doku inklusive HANDOVER.
+
+```mermaid
+flowchart LR
+    R["Sibling-Repos<br/>README / CLAUDE.md / HANDOVER"] --> B[snapshot_builder.py]
+    B --> S[(data/snapshot.json)]
+    S -->|ohne HANDOVER —<br/>bewusster Guardrail| C["Streamlit-Chat (öffentlich)<br/>Context-Stuffing → LLM"]
+    S -->|volle Doku| M["MCP-Server (lokal)<br/>list_projects, ask_about_projects"]
+    M --> D[Claude Code / Desktop]
+```
 
 ## Architektur
 
@@ -73,3 +85,13 @@ in allen Tests durch einfache Fakes ersetzt).
   irgendwann nicht mehr komplett ins Prompt passen (aktuell bei 8
   Projekten kein Problem).
 - Nur Projekt-Metadaten/Doku, keine Volltext-Code-Suche.
+
+## Portfolio-Kontext
+
+Dieses Projekt ist Teil von **[MARCO.OS](https://maggostang-droid.github.io/marco-os/)**,
+dem interaktiven Portfolio von Marco Stang — dort läuft dieser Chat direkt
+im "Ask-Marco"-Fenster. Schwesterprojekte (alle im Snapshot enthalten):
+
+- [SQL Copilot](https://github.com/maggostang-droid/sql-copilot) — LangGraph-Agent für Text-to-SQL mit Guardrails und Selbstkorrektur
+- [Review Risk Predictor](https://github.com/maggostang-droid/review-risk-predictor) — erklärbare ML-Risikovorhersage (React/FastAPI)
+- [Document Auto-Classifier](https://github.com/maggostang-droid/document-auto-classifier) — serverlose Dokumenten-Pipeline auf AWS (S3 → Lambda → Claude → DynamoDB)
