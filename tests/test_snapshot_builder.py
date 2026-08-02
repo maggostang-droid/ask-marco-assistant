@@ -72,3 +72,16 @@ def test_write_snapshot_refuses_to_write_when_too_few_projects(tmp_path, capsys)
     assert exc_info.value.code == 1
     captured = capsys.readouterr()
     assert "SECOND_BRAIN_PORTFOLIO_ROOT" in captured.err
+
+
+def test_discover_projects_excludes_repo_under_both_names(tmp_path):
+    """Der lokale Ordner wurde 2026-08 von second-brain auf ask-marco-assistant
+    umbenannt - beide Namen müssen ausgeschlossen bleiben, sonst landet das Repo
+    im eigenen Snapshot."""
+    for name in ("second-brain", "ask-marco-assistant", "echtes-projekt"):
+        (tmp_path / name).mkdir()
+        (tmp_path / name / "CLAUDE.md").write_text(f"# {name}", encoding="utf-8")
+
+    result = discover_projects(tmp_path)
+
+    assert [d.name for d in result] == ["echtes-projekt"]

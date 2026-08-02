@@ -17,13 +17,22 @@ PORTFOLIO_ROOT_ENV_VAR = "SECOND_BRAIN_PORTFOLIO_ROOT"
 
 MIN_EXPECTED_PROJECTS = 3
 
+#: Verzeichnisnamen dieses Repos selbst - es gehört nicht in seinen eigenen
+#: Snapshot. Zwei Einträge, weil der lokale Ordner im August 2026 von
+#: "second-brain" auf den GitHub-Namen "ask-marco-assistant" umbenannt wurde;
+#: der alte Name bleibt drin, damit ältere Arbeitskopien weiter korrekt bauen.
+#: Der Ausschluss geht über den Namen und nicht über eine Marker-Datei, weil
+#: der Builder auch über gespiegelte Bäume läuft, die nur die .md-Dateien
+#: enthalten (siehe SECOND_BRAIN_PORTFOLIO_ROOT).
+SELF_DIR_NAMES = {"second-brain", "ask-marco-assistant"}
+
 
 def discover_projects(portfolio_root: Path) -> list[Path]:
-    """Findet alle Sibling-Verzeichnisse mit einer CLAUDE.md, außer second-brain selbst."""
+    """Findet alle Sibling-Verzeichnisse mit einer CLAUDE.md, außer diesem Repo selbst."""
     return sorted(
         d
         for d in portfolio_root.iterdir()
-        if d.is_dir() and d.name != "second-brain" and (d / "CLAUDE.md").exists()
+        if d.is_dir() and d.name not in SELF_DIR_NAMES and (d / "CLAUDE.md").exists()
     )
 
 
