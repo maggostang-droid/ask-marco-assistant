@@ -1,11 +1,14 @@
 # Theme im MARCO.OS-Look. Farbtoken identisch zu marco-os/assets/css/style.css,
 # primaryColor ist der Cluster-Akzent (agentic-ai) aus window-manager.js.
-# Ausnahme zum Demo-Styleguide: font = "monospace", weil diese App im Portfolio
-# in ein Terminal-Fenster eingebettet ist.
+#
+# Hinweis: font bewusst "sans serif" wie in allen anderen Demos. Mit "monospace"
+# zeichnet Streamlit die Seitenueberschrift nicht (der Platz bleibt leer), und
+# der Terminal-Charakter entsteht ohnehin ueber die Kopfzeile und die
+# Code-Bloecke.
 [theme]
 base = "dark"
 primaryColor = "#fbbf24"
 backgroundColor = "#0a0716"
 secondaryBackgroundColor = "#140f24"
 textColor = "#e7e4f5"
-font = "monospace"
+font = "sans serif"

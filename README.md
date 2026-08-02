@@ -14,8 +14,7 @@ bekommt dabei bewusst weniger zu sehen als der lokale.**
 > Copilot?", statt jedes README einzeln zu lesen.
 > *Streamlit Free Tier: der erste Aufruf kann ein paar Sekunden zum Aufwachen brauchen.*
 
-<!-- TODO(Marco): Screenshot einfuegen, dann diese Zeile durch das Bild ersetzen:
-     ![Ask-Marco Assistant: Chat-Antwort über die Portfolio-Projekte](docs/demo.png) -->
+![Ask-Marco Assistant: Vorschlagsfragen zum Anklicken und der aufgeklappte Technikbereich mit dem Snapshot aller Projekte](docs/demo.png)
 
 <details>
 <summary><b>🇬🇧 English summary</b></summary>
