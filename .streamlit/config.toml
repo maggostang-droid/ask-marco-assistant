@@ -1,11 +1,11 @@
-# Streamlit-Theme im MARCO.OS-Look — Farbtoken identisch zu
-# marco-os/assets/css/style.css (:root), damit die eingebettete Chat-App
-# im Portfolio-Fenster (Ask-Marco-Mond) wie ein nativer Teil des OS wirkt.
-
+# Theme im MARCO.OS-Look. Farbtoken identisch zu marco-os/assets/css/style.css,
+# primaryColor ist der Cluster-Akzent (agentic-ai) aus window-manager.js.
+# Ausnahme zum Demo-Styleguide: font = "monospace", weil diese App im Portfolio
+# in ein Terminal-Fenster eingebettet ist.
 [theme]
 base = "dark"
-primaryColor = "#5eead4"             # --teal (Buttons, Akzente, Spinner)
-backgroundColor = "#0f0c1c"          # --panel (Haupthintergrund)
-secondaryBackgroundColor = "#1a1330" # --panel-2 (Sidebar, Eingabefelder)
-textColor = "#e7e4f5"                # --text
-font = "monospace"                   # passt zum Terminal-Framing des Fensters
+primaryColor = "#fbbf24"
+backgroundColor = "#0a0716"
+secondaryBackgroundColor = "#140f24"
+textColor = "#e7e4f5"
+font = "monospace"
