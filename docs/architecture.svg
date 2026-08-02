@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 290"
+     width="980" height="290" role="img" aria-label="Der Builder liest die Doku aller Portfolio-Repos in einen Snapshot; der oeffentliche Chat bekommt ihn ohne HANDOVER, der lokale MCP-Server mit voller Doku">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7"
+            orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#a78bfa"/>
+    </marker>
+  </defs>
+  <rect x="0.5" y="0.5" width="979" height="289" rx="14"
+        fill="#0a0716" stroke="#fbbf24" stroke-width="1" opacity="1"/>
+  <rect x="0.5" y="0.5" width="979" height="36" rx="14" fill="#140f24"/>
+  <rect x="0.5" y="22" width="979" height="14" fill="#140f24"/>
+  <line x1="0.5" y1="36" x2="979.5" y2="36" stroke="#fbbf24" stroke-width="1" opacity="0.45"/>
+  <circle cx="20" cy="18" r="5" fill="#ff5f57"/>
+  <circle cx="38" cy="18" r="5" fill="#febc2e"/>
+  <circle cx="56" cy="18" r="5" fill="#28c840"/>
+  <text x="76" y="23" fill="#c9c5e8" font-family="JetBrains Mono, SFMono-Regular, Consolas, monospace" font-size="12"
+        opacity="0.9">app://second-brain · architecture</text>
+
+  <path d="M 224 164 L 254 164" fill="none" stroke="#a78bfa" stroke-width="1.8"
+        marker-end="url(#arrow)" opacity="0.9"/>
+  
+  <path d="M 444 164 L 474 164" fill="none" stroke="#a78bfa" stroke-width="1.8"
+        marker-end="url(#arrow)" opacity="0.9"/>
+  
+  <path d="M 644 144.53225806451613 L 774 114.75806451612902" fill="none" stroke="#a78bfa" stroke-width="1.8"
+        marker-end="url(#arrow)" opacity="0.9"/>
+  <rect x="658.45" y="108.64516129032256" width="101.10000000000001" height="17"
+             rx="5" fill="#0a0716" opacity="0.92"/>
+         <text x="709" y="120.64516129032256" fill="#c9c5e8" font-family="JetBrains Mono, SFMono-Regular, Consolas, monospace"
+          font-size="11" text-anchor="middle">ohne HANDOVER</text>
+  <path d="M 644 182.3709677419355 L 774 210.46774193548387" fill="none" stroke="#a78bfa" stroke-width="1.8"
+        marker-end="url(#arrow)" opacity="0.9"/>
+  <rect x="668.5" y="175.4193548387097" width="81" height="17"
+             rx="5" fill="#0a0716" opacity="0.92"/>
+         <text x="709" y="187.4193548387097" fill="#c9c5e8" font-family="JetBrains Mono, SFMono-Regular, Consolas, monospace"
+          font-size="11" text-anchor="middle">volle Doku</text>
+
+  <g>
+    <rect x="24" y="133" width="200" height="62" rx="10"
+          fill="#140f24" stroke="#06040d" stroke-width="3"/>
+    <rect x="24" y="133" width="200" height="62" rx="10"
+          fill="none" stroke="#fbbf24" stroke-width="1.5" opacity="0.85"/>
+    <text x="124" y="161" fill="#e7e4f5" font-family="JetBrains Mono, SFMono-Regular, Consolas, monospace"
+          font-size="14" font-weight="600" text-anchor="middle">Portfolio-Repos</text>
+    <text x="124" y="179" fill="#c9c5e8" font-family="JetBrains Mono, SFMono-Regular, Consolas, monospace" font-size="11" text-anchor="middle" opacity="0.85">README, CLAUDE, HANDOVER</text>
+  </g>
+  <g>
+    <rect x="254" y="133" width="190" height="62" rx="10"
+          fill="#140f24" stroke="#06040d" stroke-width="3"/>
+    <rect x="254" y="133" width="190" height="62" rx="10"
+          fill="none" stroke="#fbbf24" stroke-width="1.5" opacity="0.85"/>
+    <text x="349" y="161" fill="#e7e4f5" font-family="JetBrains Mono, SFMono-Regular, Consolas, monospace"
+          font-size="14" font-weight="600" text-anchor="middle">snapshot_builder</text>
+    <text x="349" y="179" fill="#c9c5e8" font-family="JetBrains Mono, SFMono-Regular, Consolas, monospace" font-size="11" text-anchor="middle" opacity="0.85">erkennt CLAUDE.md</text>
+  </g>
+  <g>
+    <rect x="474" y="133" width="170" height="62" rx="10"
+          fill="#fbbf24" stroke="#06040d" stroke-width="3"/>
+    <rect x="474" y="133" width="170" height="62" rx="10"
+          fill="none" stroke="#06040d" stroke-width="1.5" opacity="1"/>
+    <text x="559" y="161" fill="#06040d" font-family="JetBrains Mono, SFMono-Regular, Consolas, monospace"
+          font-size="14" font-weight="600" text-anchor="middle">snapshot.json</text>
+    <text x="559" y="179" fill="#06040d" font-family="JetBrains Mono, SFMono-Regular, Consolas, monospace" font-size="11" text-anchor="middle" opacity="0.85">ein Prompt-Kontext</text>
+  </g>
+  <g>
+    <rect x="774" y="64" width="190" height="58" rx="10"
+          fill="#140f24" stroke="#06040d" stroke-width="3"/>
+    <rect x="774" y="64" width="190" height="58" rx="10"
+          fill="none" stroke="#fbbf24" stroke-width="1.5" opacity="0.85"/>
+    <text x="869" y="90" fill="#e7e4f5" font-family="JetBrains Mono, SFMono-Regular, Consolas, monospace"
+          font-size="14" font-weight="600" text-anchor="middle">Streamlit-Chat</text>
+    <text x="869" y="108" fill="#c9c5e8" font-family="JetBrains Mono, SFMono-Regular, Consolas, monospace" font-size="11" text-anchor="middle" opacity="0.85">oeffentlich</text>
+  </g>
+  <g>
+    <rect x="774" y="202" width="190" height="58" rx="10"
+          fill="#140f24" stroke="#06040d" stroke-width="3"/>
+    <rect x="774" y="202" width="190" height="58" rx="10"
+          fill="none" stroke="#fbbf24" stroke-width="1.5" opacity="0.85"/>
+    <text x="869" y="228" fill="#e7e4f5" font-family="JetBrains Mono, SFMono-Regular, Consolas, monospace"
+          font-size="14" font-weight="600" text-anchor="middle">MCP-Server</text>
+    <text x="869" y="246" fill="#c9c5e8" font-family="JetBrains Mono, SFMono-Regular, Consolas, monospace" font-size="11" text-anchor="middle" opacity="0.85">lokal, Claude Code</text>
+  </g>
+</svg>

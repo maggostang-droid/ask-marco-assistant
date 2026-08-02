@@ -1,0 +1,75 @@
+{
+  "title": "app://second-brain · architecture",
+  "alt": "Der Builder liest die Doku aller Portfolio-Repos in einen Snapshot; der oeffentliche Chat bekommt ihn ohne HANDOVER, der lokale MCP-Server mit voller Doku",
+  "accent": "#fbbf24",
+  "width": 980,
+  "height": 290,
+  "nodes": [
+    {
+      "id": "repos",
+      "x": 24,
+      "y": 133,
+      "w": 200,
+      "h": 62,
+      "label": "Portfolio-Repos",
+      "sub": "README, CLAUDE, HANDOVER"
+    },
+    {
+      "id": "build",
+      "x": 254,
+      "y": 133,
+      "w": 190,
+      "h": 62,
+      "label": "snapshot_builder",
+      "sub": "erkennt CLAUDE.md"
+    },
+    {
+      "id": "snap",
+      "x": 474,
+      "y": 133,
+      "w": 170,
+      "h": 62,
+      "label": "snapshot.json",
+      "sub": "ein Prompt-Kontext",
+      "emphasis": true
+    },
+    {
+      "id": "chat",
+      "x": 774,
+      "y": 64,
+      "w": 190,
+      "h": 58,
+      "label": "Streamlit-Chat",
+      "sub": "oeffentlich"
+    },
+    {
+      "id": "mcp",
+      "x": 774,
+      "y": 202,
+      "w": 190,
+      "h": 58,
+      "label": "MCP-Server",
+      "sub": "lokal, Claude Code"
+    }
+  ],
+  "edges": [
+    {
+      "from": "repos",
+      "to": "build"
+    },
+    {
+      "from": "build",
+      "to": "snap"
+    },
+    {
+      "from": "snap",
+      "to": "chat",
+      "label": "ohne HANDOVER"
+    },
+    {
+      "from": "snap",
+      "to": "mcp",
+      "label": "volle Doku"
+    }
+  ]
+}
