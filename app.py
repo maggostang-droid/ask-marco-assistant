@@ -60,7 +60,7 @@ for message in st.session_state.messages:
 SUGGESTIONS = {
     "Cloud-Erfahrung?": "sucht quer über alle Projekte",
     "Was macht der SQL Copilot?": "Detailfrage zu einem Projekt",
-    "Wo sind die Schwächen?": "die unangenehme Frage",
+    "Wo sind die Schwächen?": "Grenzen und offene Punkte",
 }
 SUGGESTION_PROMPTS = {
     "Cloud-Erfahrung?": "Welche Projekte zeigen Cloud-Erfahrung, und woran genau?",
