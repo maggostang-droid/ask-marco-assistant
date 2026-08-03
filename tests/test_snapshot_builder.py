@@ -85,3 +85,16 @@ def test_discover_projects_excludes_repo_under_both_names(tmp_path):
     result = discover_projects(tmp_path)
 
     assert [d.name for d in result] == ["echtes-projekt"]
+
+
+def test_discover_projects_excludes_retired_concepts(tmp_path):
+    """stangfolio und stangverse wurden am 03.08.2026 eingestellt. Ihre Ordner
+    liegen ggf. weiter unter 02_Portfolio und haben eine CLAUDE.md - ohne
+    Ausschluss praesentiert der Chat sie Recruitern als aktuelle Projekte."""
+    for name in ("stangfolio", "stangverse", "marco-os"):
+        (tmp_path / name).mkdir()
+        (tmp_path / name / "CLAUDE.md").write_text(f"# {name}", encoding="utf-8")
+
+    result = discover_projects(tmp_path)
+
+    assert [d.name for d in result] == ["marco-os"]

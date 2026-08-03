@@ -26,13 +26,25 @@ MIN_EXPECTED_PROJECTS = 3
 #: enthalten (siehe SECOND_BRAIN_PORTFOLIO_ROOT).
 SELF_DIR_NAMES = {"second-brain", "ask-marco-assistant"}
 
+#: Nicht mehr verfolgte Konzepte. Beide liegen ggf. noch als Ordner unter
+#: 02_Portfolio und haben eine CLAUDE.md, wären also weiter eingesammelt worden
+#: — der Chat hätte sie Recruitern als aktuelle Portfolio-Projekte präsentiert.
+#: Am 03.08.2026 eingestellt: marco-os ist das Portfolio.
+RETIRED_DIR_NAMES = {"stangfolio", "stangverse"}
+
+EXCLUDED_DIR_NAMES = SELF_DIR_NAMES | RETIRED_DIR_NAMES
+
 
 def discover_projects(portfolio_root: Path) -> list[Path]:
-    """Findet alle Sibling-Verzeichnisse mit einer CLAUDE.md, außer diesem Repo selbst."""
+    """Findet alle Sibling-Verzeichnisse mit einer CLAUDE.md.
+
+    Ausgenommen sind dieses Repo selbst und eingestellte Konzepte
+    (siehe EXCLUDED_DIR_NAMES).
+    """
     return sorted(
         d
         for d in portfolio_root.iterdir()
-        if d.is_dir() and d.name not in SELF_DIR_NAMES and (d / "CLAUDE.md").exists()
+        if d.is_dir() and d.name not in EXCLUDED_DIR_NAMES and (d / "CLAUDE.md").exists()
     )
 
 
