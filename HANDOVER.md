@@ -8,8 +8,8 @@ Scope-Grenzen sind, und was als Nächstes ansteht.
 ## Status: Live deployed, alle 14 Tasks abgeschlossen ✅
 
 - **Live-Demo:** https://second-brain-projects.streamlit.app/
-- **Repo:** https://github.com/maggostang-droid/second-brain
-- **Projektseite:** https://maggostang-droid.github.io/second-brain/
+- **Repo:** https://github.com/marco-stang/ask-marco-assistant
+- **Projektseite:** https://marco-stang.github.io/ask-marco-assistant/
 - **MCP-Server:** implementiert und getestet, aber **nicht** von einer
   Agenten-Session in Marcos lokales Claude Desktop/Code eingebunden
   (persönliche App-Konfiguration) — Anleitung in
@@ -100,8 +100,8 @@ cp .env.example .env  # LLM_PROVIDER/LLM_MODEL/API-Key eintragen
 ## Links
 
 - Live-Demo: https://second-brain-projects.streamlit.app/
-- Repo: https://github.com/maggostang-droid/second-brain
-- Projektseite (GitHub Pages): https://maggostang-droid.github.io/second-brain/
+- Repo: https://github.com/marco-stang/ask-marco-assistant
+- Projektseite (GitHub Pages): https://marco-stang.github.io/ask-marco-assistant/
 - Design-Spec: [`docs/superpowers/specs/2026-07-29-second-brain-design.md`](docs/superpowers/specs/2026-07-29-second-brain-design.md)
 - Implementierungsplan: [`docs/superpowers/plans/2026-07-29-second-brain-implementation.md`](docs/superpowers/plans/2026-07-29-second-brain-implementation.md)
 - Portfolio-Backlog-Eintrag: [`../PORTFOLIO_BACKLOG.md`](../PORTFOLIO_BACKLOG.md), Item #5

@@ -61,10 +61,10 @@ Implementierungsplan abgeschlossen ist.*
   README/CLAUDE.md, GitHub-Pages-Seite. Whole-Branch-Review + Fix-Welle
   durchgeführt (13/13 Tests grün).
 - ✅ Task 11: GitHub-Repo angelegt und gepusht:
-  https://github.com/maggostang-droid/second-brain (public, Branch
+  https://github.com/marco-stang/ask-marco-assistant (public, Branch
   `master`).
 - ✅ Task 12: GitHub-Pages-Projektseite live:
-  https://maggostang-droid.github.io/second-brain/
+  https://marco-stang.github.io/ask-marco-assistant/
 - ✅ Task 14: `PORTFOLIO_BACKLOG.md` (Item #5, Item #3 als ersetzt markiert)
   und `stangfolio/data/projects.js` (Karte mit `status: "coming-soon"`,
   `demoUrl: null`) aktualisiert.

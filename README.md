@@ -109,13 +109,13 @@ Einmalig: `python -m venv .venv`, `.venv/Scripts/python.exe -m pip install -e ".
 marco@portfolio:~$ open marco-os --project second-brain
 ```
 
-**[▸ Dieses Projekt in MARCO.OS öffnen](https://maggostang-droid.github.io/marco-os/#second-brain)**,
+**[▸ Dieses Projekt in MARCO.OS öffnen](https://marco-stang.github.io/#second-brain)**,
 dem interaktiven Portfolio von Marco Stang. Dort läuft dieser Chat direkt im
 Ask-Marco-Fenster.
 
 **Schwesterprojekte:**
-[SQL Copilot](https://github.com/maggostang-droid/sql-copilot) (LangGraph-Agent mit Guardrails) ·
-[Review Risk Predictor](https://github.com/maggostang-droid/review-risk-predictor) (erklärbares ML, React/FastAPI) ·
-[Document Auto-Classifier](https://github.com/maggostang-droid/document-auto-classifier) (serverlos auf AWS)
+[SQL Copilot](https://github.com/marco-stang/sql-copilot) (LangGraph-Agent mit Guardrails) ·
+[Review Risk Predictor](https://github.com/marco-stang/review-risk-predictor) (erklärbares ML, React/FastAPI) ·
+[Document Auto-Classifier](https://github.com/marco-stang/document-auto-classifier) (serverlos auf AWS)
 
 <sub>Marco Stang · Dr.-Ing. · [LinkedIn](https://www.linkedin.com/in/marco-stang) · stang.marco@t-online.de · MIT-Lizenz</sub>

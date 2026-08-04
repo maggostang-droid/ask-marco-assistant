@@ -872,7 +872,7 @@ git commit -m "feat: MCP-Server mit list_projects/ask_about_projects"
 Portfolio-Projekt von Marco Stang für Bewerbungen auf AI/KI-Rollen (ggf.
 auch KI-Transformations-Rollen).
 
-🔗 **[Projektseite](https://maggostang-droid.github.io/second-brain/)**
+🔗 **[Projektseite](https://marco-stang.github.io/second-brain/)**
 
 ## In 30 Sekunden
 
@@ -1091,7 +1091,7 @@ git commit -m "docs: README und CLAUDE.md"
     </p>
     <div class="cta-row">
       <a class="btn btn-disabled" aria-disabled="true">💬 Live-Demo folgt</a>
-      <a class="btn btn-outline" href="https://github.com/maggostang-droid/second-brain">Code auf GitHub</a>
+      <a class="btn btn-outline" href="https://github.com/marco-stang/second-brain">Code auf GitHub</a>
     </div>
   </header>
 
@@ -1141,9 +1141,9 @@ git commit -m "docs: README und CLAUDE.md"
   <section>
     <h2>Weiterführende Doku</h2>
     <p>
-      <a href="https://github.com/maggostang-droid/second-brain/blob/master/README.md">README</a> ·
-      <a href="https://github.com/maggostang-droid/second-brain/blob/master/docs/superpowers/specs/2026-07-29-second-brain-design.md">Design-Spec</a> ·
-      <a href="https://github.com/maggostang-droid/second-brain/blob/master/docs/superpowers/plans/2026-07-29-second-brain-implementation.md">Implementierungsplan</a>
+      <a href="https://github.com/marco-stang/second-brain/blob/master/README.md">README</a> ·
+      <a href="https://github.com/marco-stang/second-brain/blob/master/docs/superpowers/specs/2026-07-29-second-brain-design.md">Design-Spec</a> ·
+      <a href="https://github.com/marco-stang/second-brain/blob/master/docs/superpowers/plans/2026-07-29-second-brain-implementation.md">Implementierungsplan</a>
     </p>
   </section>
 
@@ -1156,7 +1156,7 @@ git commit -m "docs: README und CLAUDE.md"
     </ul>
   </section>
 
-  <footer>Marco Stang · <a href="https://github.com/maggostang-droid">github.com/maggostang-droid</a></footer>
+  <footer>Marco Stang · <a href="https://github.com/marco-stang">github.com/marco-stang</a></footer>
 </div>
 </body>
 </html>
@@ -1191,12 +1191,12 @@ Marco Repo-Name und Sichtbarkeit bestätigen (Standardannahme: public, Name
 
 - [ ] **Step 2: Repo anlegen**
 
-Mit `gh` (falls verfügbar, sonst manuell im Browser als `maggostang-droid`
+Mit `gh` (falls verfügbar, sonst manuell im Browser als `marco-stang`
 → "New repository" → Name `second-brain`, public, ohne
 README/.gitignore-Vorbelegung):
 
 ```bash
-gh repo create maggostang-droid/second-brain --public --source=. --remote=origin
+gh repo create marco-stang/second-brain --public --source=. --remote=origin
 ```
 
 - [ ] **Step 3: Pushen**
@@ -1221,17 +1221,17 @@ Erwartet: `origin` zeigt auf das neue Repo, letzter Commit ist auf GitHub sichtb
 - [ ] **Step 1: GitHub Pages aktivieren**
 
 ```bash
-gh api -X POST "repos/maggostang-droid/second-brain/pages" \
+gh api -X POST "repos/marco-stang/second-brain/pages" \
   -f "source[branch]=master" -f "source[path]=/docs"
 ```
 
 Erwartet: Antwort enthält `html_url` (Format
-`https://maggostang-droid.github.io/second-brain/`).
+`https://marco-stang.github.io/second-brain/`).
 
 - [ ] **Step 2: Auf Verfügbarkeit warten**
 
 ```bash
-until curl -s https://maggostang-droid.github.io/second-brain/ | grep -q "second brain"; do sleep 3; done
+until curl -s https://marco-stang.github.io/second-brain/ | grep -q "second brain"; do sleep 3; done
 ```
 
 - [ ] **Step 3: URL in `README.md` und `docs/index.html` eintragen, falls dort noch Platzhalter stehen, committen und pushen**
@@ -1252,7 +1252,7 @@ git push
 
 - [ ] **Step 1: Auf share.streamlit.io mit dem GitHub-Account einloggen**
 
-- [ ] **Step 2: Neue App aus `maggostang-droid/second-brain`, Branch `master`, Datei `app.py` deployen**
+- [ ] **Step 2: Neue App aus `marco-stang/second-brain`, Branch `master`, Datei `app.py` deployen**
 
 - [ ] **Step 3: Secrets setzen (Streamlit-Cloud-UI, "Secrets")**
 
@@ -1311,7 +1311,7 @@ prüfen). Schema:
   description: "Beantwortet Fragen zu allen Portfolio-Projekten per Chat (Context-Stuffing über README/CLAUDE.md/HANDOVER aller Repos) und exponiert dasselbe Wissen als MCP-Server für Claude Code/Desktop.",
   tags: ["Python", "LangChain", "Streamlit", "MCP", "Pydantic"],
   demoUrl: "https://second-brain.streamlit.app/",
-  repoUrl: "https://github.com/maggostang-droid/second-brain",
+  repoUrl: "https://github.com/marco-stang/second-brain",
   status: "live",
   coldStartNote: "Streamlit Community Cloud (Free Tier) schläft nach Inaktivität ein — erster Ladevorgang kann ein paar Sekunden dauern.",
 }

@@ -53,8 +53,8 @@ Whole-Branch-Review, nicht während der ursprünglichen Implementierung.
 - **Testsuite läuft grün:** `pytest tests/ -v` → **15/15 PASSED**, keine
   Netzwerk-/API-Key-Abhängigkeit (selbst nachvollzogen).
 - **Live deployed, nicht nur lokal:**
-  - GitHub-Repo public: `github.com/maggostang-droid/second-brain`
-  - GitHub-Pages-Projektseite: `maggostang-droid.github.io/second-brain/`
+  - GitHub-Repo public: `github.com/marco-stang/ask-marco-assistant`
+  - GitHub-Pages-Projektseite: `marco-stang.github.io/ask-marco-assistant/`
   - Streamlit-Community-Cloud-Chat:
     `second-brain-projects.streamlit.app` — laut `CLAUDE.md` als erreichbar
     und iframe-einbettbar (kein `X-Frame-Options`-Header) verifiziert.
